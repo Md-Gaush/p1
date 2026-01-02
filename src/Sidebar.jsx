@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoOptionsSharp } from "react-icons/io5";
 import { BiText } from "react-icons/bi";
 import { CiImageOn } from "react-icons/ci";
@@ -17,61 +17,61 @@ import Templates from './components/Templates';
 import TemplateColor from './components/TemplateColor';
 import Qr from './components/Qr';
 import Table from './components/Table';
+import Editor from './components/Editor';
 
-const Sidebar = ({ data,setData}) => {
+const Sidebar = ({ data, setData, setActiveTool,activeTool }) => {
+
+  const [productOpen, setProductOpen] = useState(false);
+
   return (
     <div className="h-[100vh]  mt-0 space-y-5 overflow-y-auto ">
 
-    <Sheet>
+<Sheet open={productOpen} onOpenChange={setProductOpen}>
     <SheetTrigger asChild>
      <div className="flex flex-col items-center text-center mt-10 cursor-pointer ">
-        <IoOptionsSharp  size='28'/>
+        <IoOptionsSharp  size='28' className={`${productOpen ? "bg-blue-400 text-white" : ""}`}/>
           <h1>Product Options</h1>
      </div>
      </SheetTrigger>
      <SheetContent
       side="right"
-     className="w-[90vw] max-w-none sm:max-w-none">
+     className="w-[90vw] max-w-none sm:max-w-none rounded-l-3xl">
       <Product data={data} setData={setData} />
      </SheetContent>
-
      </Sheet>
 
-     <Sheet >
-    <SheetTrigger asChild>
-    <div className="flex flex-col items-center text-center  cursor-pointer">
-    <BiText   size='28' className="bg-blue-400"/>
+
+
+
+    
+    <div 
+    className="flex flex-col items-center text-center  cursor-pointer " 
+    onClick={() => setActiveTool("text")}
+    
+    >
+  <BiText   size='28' className={`${activeTool === 'text' ? 'bg-blue-400' : ''}`}/>
       <h1>Text</h1>
     </div>
-   </SheetTrigger>
-   <SheetContent className=' h-[400px] w-[300px]  left-[8%] mt-[5%] rounded-2xl' side="left" >
-   <Text data={data} setData={setData} />
-   </SheetContent>
-      </Sheet>
+ 
+           
+   
+ 
+
     
-     <Sheet >
-    <SheetTrigger asChild>
-    <div className="flex flex-col items-center text-center  cursor-pointer" >
-    <CiImageOn  size='28'/>
+   
+    <div className="flex flex-col items-center text-center  cursor-pointer" onClick={() => setActiveTool("upload")} >
+    <CiImageOn  size='28' className={`${activeTool === 'upload' ? 'bg-blue-400' : ''}`}/>
       <h1>Uploads</h1>
     </div>
-    </SheetTrigger>
-    <SheetContent className=' h-[400px] w-[300px] left-[8%] mt-[5%] rounded-2xl' side="left" >
-      <Uploads data={data} setData={setData} />
-    </SheetContent>
-      </Sheet>
+   
 
-     <Sheet>
-      <SheetTrigger asChild>
-    <div className="flex flex-col items-center text-center cursor-pointer">
-    <SiTaichigraphics  size='28'/>
+
+     
+    <div className="flex flex-col items-center text-center cursor-pointer" onClick={() => setActiveTool("Graphics")}>
+    <SiTaichigraphics  size='28' className={`${activeTool === 'Graphics' ? 'bg-blue-400' : ''}`}/>
       <h1>Graphics</h1>
     </div>
-    </SheetTrigger>
-    <SheetContent className=' h-[400px] w-[300px]  left-[8%] mt-[5%] rounded-2xl' side="left" >
-      <Graphics/>
-    </SheetContent>
-      </Sheet>
+    
 
 
        <Sheet>
@@ -88,42 +88,36 @@ const Sidebar = ({ data,setData}) => {
     </SheetContent>
         </Sheet>
 
-        <Sheet>
-      <SheetTrigger asChild>
-    <div className="flex flex-col items-center text-center  cursor-pointer">
-    <IoColorFillOutline  size='28'/>
+   
+    <div 
+    className="flex flex-col items-center text-center  cursor-pointer"
+    onClick={() => setActiveTool("Color")}
+    >
+    <IoColorFillOutline  size='28' className={`${activeTool === 'Color' ? 'bg-blue-400' : ''}`}/>
       <h1>Template Color</h1>
     </div>
-    </SheetTrigger>
-    <SheetContent className=' h-[400px] w-[300px]  left-[8%] mt-[5%] rounded-2xl' side="left" >
-      <TemplateColor data={data} setData={setData}/>
-    </SheetContent>
-         </Sheet>
+   
 
 
-       <Sheet>
-    <SheetTrigger asChild>
-    <div className="flex flex-col items-center text-center  cursor-pointer">
-    <FaQrcode  size='28'/>
+     
+    <div 
+    className="flex flex-col items-center text-center  cursor-pointer"
+    onClick={() => setActiveTool("Qr")}
+    >
+    <FaQrcode  size='28'  className={`${activeTool === 'Qr' ? 'bg-blue-400' : ''}`}/>
       <h1>QR-codes</h1>
     </div>
-    </SheetTrigger>
-    <SheetContent className=' h-[400px] w-[300px]  left-[8%] mt-[5%] rounded-2xl' side="left" >
-      <Qr/>
-    </SheetContent>
-         </Sheet>
+   
 
-       <Sheet>
-      <SheetTrigger asChild>
-    <div className="flex flex-col items-center text-center  mb-20 cursor-pointer">
-    <CiViewTable  size='28'/>
+     
+    <div 
+    className="flex flex-col items-center text-center  mb-20 cursor-pointer"
+    onClick={() => setActiveTool("Tables")}
+    >
+    <CiViewTable  size='28' className={`${activeTool === 'Tables' ? 'bg-blue-400' : ''}`}/>
       <h1>Table</h1>
     </div>
-    </SheetTrigger>
-    <SheetContent className=' h-[400px] w-[300px]  left-[8%] mt-[5%] rounded-2xl' side="left" >
-      <Table/>
-    </SheetContent>
-        </Sheet>
+   
 
     </div>
 

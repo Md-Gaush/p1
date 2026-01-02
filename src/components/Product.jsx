@@ -12,7 +12,7 @@ const Product = ({ data,setData}) => {
 
 
   return (
-    <div className="flex gap-10  w-full h-full bg-gray-200">
+    <div className="flex gap-10  w-full h-full bg-gray-100 rounded-l-3xl">
     <div className="w-[60%]  flex items-center justify-center">
  
  {

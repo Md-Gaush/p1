@@ -3,14 +3,14 @@ import React, { useState } from "react";
 const Result = ({ data,view = "front" }) => {
   console.log("data result mai show ho raha hai", data);
    console.log("yaha dekhna hai view ko",view)
-  // const [view,setView] = useState("front")
+  
 
   return (
     
     <>
     {view === "front" ? (
       <div
-        className="bg-gray-700 h-[300px] w-[400px] flex flex-col items-center"
+        className="bg-black h-[300px] w-[400px] flex flex-col items-center"
         style={{ backgroundColor: data?.color?.value }}
       >
         <div className="h-[280px] w-[380px] flex flex-col items-center space-y-4 border border-dashed border-green-400 mx-4 my-4 text-white">
@@ -41,11 +41,12 @@ const Result = ({ data,view = "front" }) => {
               <h1>{data?.address2 || "ADDRESS 2"}</h1>
             </div>
           </div>
-          <div className="border-3 rounded-full bg-yellow-500 w-[80%] mb-0"></div>
+          <div className="border-3 rounded-full w-[80%]"></div>
         </div>
+       
       </div>
     ) : (
-      <div className="h-[300px] w-[400px] bg-white border-2 flex items-center justify-center">
+      <div className="w-[300px] h-[300px] bg-white border-2 flex items-center justify-center">
         <h1 className="text-white font-bold "></h1>
       </div>
     )}

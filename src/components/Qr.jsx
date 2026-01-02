@@ -8,7 +8,7 @@ const Qr = () => {
   const [showQr, setShowQr] = useState(false)
 
   return (
-    <div className="max-w-md mx-auto mt-0 relative">
+    <div className="max-w-md mx-auto mt-0 relative h-full">
      
       <div className="rounded-xl border bg-white shadow-sm p-6 space-y-6">
         

@@ -53,7 +53,8 @@ const shapes = [s1,s2,s3,s4]
 const Graphics = () => {
   return (
    <>
-     <h1 className='text-3xl font-semibold mt-5 mx-5'>Graphics</h1>
+ <div className="h-full overflow-y-auto scrollbar-hide">
+   <h1 className='text-3xl font-semibold mt-5 mx-5'>Graphics</h1>
      <div className="mx-4 relative">
      <Input
           type="text"
@@ -199,6 +200,8 @@ const Graphics = () => {
 
      
      </div>
+   </div>
+    
    
      
    </>
